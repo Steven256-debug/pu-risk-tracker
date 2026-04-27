@@ -1,6 +1,6 @@
 """
 ╔══════════════════════════════════════════════════════════════════════════╗
-║  Pentecost University — AI-Powered Academic Performance Tracker          ║
+║ AI-Powered Academic Performance Tracker          ║
 ║  app.py  ·  Production Streamlit Deployment                              ║
 ║  Authors   : Steven Asante-Poku Jnr & Frank Amoah  |  2025             ║
 ║  Supervisor: Mr Harry Attieku-Boateng                                   ║
