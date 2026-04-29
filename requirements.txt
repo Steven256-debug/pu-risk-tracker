@@ -1,8 +1,8 @@
-streamlit
-pandas
-numpy
-scikit-learn
-plotly
-shap
-joblib
-reportlab
+streamlit==1.32.0
+pandas==2.0.3
+numpy==1.24.4
+scikit-learn==1.3.2
+plotly==5.18.0
+shap==0.44.1
+joblib==1.3.2
+reportlab==4.0.8
