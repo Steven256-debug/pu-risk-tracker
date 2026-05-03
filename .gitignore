@@ -10,3 +10,12 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+ADVISOR_FESAC_PASSWORD  = advisor_fesac_2025
+ADVISOR_FBA_PASSWORD    = advisor_fba_2025
+ADVISOR_FEHAS_PASSWORD  = advisor_fehas_2025
+ADVISOR_PSTM_PASSWORD   = advisor_pstm_2025
+HOD_FESAC_PASSWORD      = hod_fesac_2025
+HOD_FBA_PASSWORD        = hod_fba_2025
+HOD_FEHAS_PASSWORD      = hod_fehas_2025
+HOD_PSTM_PASSWORD       = hod_pstm_2025
+DEAN_PASSWORD           = dean_2025
