@@ -1450,10 +1450,10 @@ def tab_analytics(role: str):
     rd1, rd2 = st.columns([1, 1.5])
     with rd1:
         st.plotly_chart(chart_donut(n_lr,n_mr,n_hr),
-                        use_container_width=True, config=cfg)
+                        use_container_width=True, config=cfg, key="analytics_donut")
     with rd2:
         st.plotly_chart(chart_stacked(df, fac_filter),
-                        use_container_width=True, config=cfg)
+                        use_container_width=True, config=cfg, key="analytics_stacked" )
     ml_insight(
         "The <b>donut chart</b> shows the proportion of students in each risk class "
         "as predicted by the LightGBM model. "
@@ -1610,10 +1610,10 @@ def tab_batch():
         c1, c2 = st.columns(2)
         with c1:
             st.plotly_chart(chart_donut(n_lr,n_mr,n_hr),
-                            use_container_width=True, config=cfg)
+                            use_container_width=True, config=cfg, key="batch_donut")
         with c2:
             st.plotly_chart(chart_stacked(df, None),
-                            use_container_width=True, config=cfg)
+                            use_container_width=True, config=cfg, key="batch_stacked")
 
         ml_insight(
             "The model has been applied to all students using the same "
