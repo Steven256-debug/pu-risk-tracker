@@ -1508,7 +1508,7 @@ def tab_analytics(role: str):
                     return ""
                 except: return ""
             st.dataframe(
-                top.style.applymap(_hl, subset=["prob_high"]),
+                top.style.map(_hl, subset=["prob_high"]),
                 use_container_width=True, hide_index=True)
             ml_insight(
                 "This table lists High Risk students ranked by their "
@@ -1638,7 +1638,7 @@ def tab_batch():
             return ""
 
         st.dataframe(
-            df_d.style.applymap(_col, subset=["risk_name"]),
+            df_d.style.map(_col, subset=["risk_name"]),
             use_container_width=True, height=440)
 
         dl1, dl2 = st.columns(2)
