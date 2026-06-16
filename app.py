@@ -1253,7 +1253,7 @@ def render_sidebar(role: str, df):
                         unsafe_allow_html=True)
 
         # Quick guide
-        with st.expander("How to use this system"):
+        with st.expander("How to use this system", key="sidebar_help_expander"):
             st.markdown("""
             **Step 1 — Upload your data**
             Upload a CSV file containing your students' semester records.
@@ -1491,7 +1491,8 @@ def student_detail(row: dict, uid: str = ""):
 
     st.plotly_chart(chart_trajectory(traj),
                     use_container_width=True,
-                    config={"displayModeBar": False})
+                    config={"displayModeBar": False},
+                    key=f"traj_{uid}")
 
 
     # ── What-If Simulator ─────────────────────────────────────────────────
@@ -1696,7 +1697,7 @@ def main_dashboard(role: str):
     # MODEL TRANSPARENCY DASHBOARD — always visible, collapsed by default
     # ══════════════════════════════════════════════════════════════════════
     with st.expander("🔬 About the AI Model — How It Makes Predictions",
-                     expanded=False):
+                     expanded=False, key="model_transparency_expander"):
 
         st.markdown('<p style="color:#94a3b8;font-size:.85rem;'
                     'margin-bottom:1rem">'
@@ -1753,7 +1754,8 @@ def main_dashboard(role: str):
                         unsafe_allow_html=True)
             st.plotly_chart(chart_shap_importance(),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="shap_importance_top")
 
         with sh2:
             st.markdown('<p style="color:#f1f5f9;font-weight:700;'
@@ -1770,7 +1772,8 @@ def main_dashboard(role: str):
                         unsafe_allow_html=True)
             st.plotly_chart(chart_fairness_audit(),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="fairness_audit_top")
 
         # ── How to interpret the probability ──────────────────────────────
         st.markdown('<p style="color:#f1f5f9;font-weight:700;'
@@ -2028,7 +2031,7 @@ def main_dashboard(role: str):
                 st.error(f"There was a problem reading your file: {e}")
 
         # Required columns note
-        with st.expander("What columns does my CSV file need?"):
+        with st.expander("What columns does my CSV file need?", key="csv_columns_help_expander"):
             st.markdown("""
             Your file must include these columns:
 
@@ -2085,14 +2088,16 @@ def main_dashboard(role: str):
         st.markdown('<p style="color:#94a3b8;font-size:.82rem;margin-bottom:.3rem">'
                     'Risk breakdown</p>', unsafe_allow_html=True)
         st.plotly_chart(donut_chart(n_lr, n_mr, n_hr),
-                        use_container_width=True,
-                        config={"displayModeBar": False})
+                use_container_width=True,
+                config={"displayModeBar": False},
+                key="donut_risk_breakdown")
     with ch2:
         st.markdown('<p style="color:#94a3b8;font-size:.82rem;margin-bottom:.3rem">'
                     'Risk by faculty</p>', unsafe_allow_html=True)
         st.plotly_chart(faculty_bar(df),
-                        use_container_width=True,
-                        config={"displayModeBar": False})
+                use_container_width=True,
+                config={"displayModeBar": False},
+                key="faculty_bar_main")
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -2100,7 +2105,7 @@ def main_dashboard(role: str):
     # ANALYTICS — Faculty comparison, gender analysis, trends, graduation
     # ══════════════════════════════════════════════════════════════════════
     with st.expander("📊 View Detailed Analytics (Faculty Comparison, Gender, Trends, Graduation)",
-                     expanded=False):
+                     expanded=False, key="analytics_expander"):
 
         # ── Component 1: Faculty Performance Comparison ────────────────────
         st.markdown('<p style="color:#f1f5f9;font-size:.95rem;font-weight:600;'
@@ -2117,13 +2122,15 @@ def main_dashboard(role: str):
                         'Average GPA by Faculty</p>', unsafe_allow_html=True)
             st.plotly_chart(chart_faculty_gpa(df),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="faculty_gpa")
         with fc2:
             st.markdown('<p style="color:#94a3b8;font-size:.8rem;margin-bottom:.2rem">'
                         'Risk Level Breakdown by Faculty</p>', unsafe_allow_html=True)
             st.plotly_chart(chart_faculty_risk_pct(df),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="faculty_risk_pct")
 
         st.markdown("<br>", unsafe_allow_html=True)
 
@@ -2142,13 +2149,15 @@ def main_dashboard(role: str):
                         'Average GPA by Gender per Faculty</p>', unsafe_allow_html=True)
             st.plotly_chart(chart_gender_gpa(df),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="gender_gpa")
         with gc2:
             st.markdown('<p style="color:#94a3b8;font-size:.8rem;margin-bottom:.2rem">'
                         'Risk Split by Gender</p>', unsafe_allow_html=True)
             st.plotly_chart(chart_gender_risk_split(df),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="gender_risk_split")
 
         st.markdown("<br>", unsafe_allow_html=True)
 
@@ -2167,13 +2176,15 @@ def main_dashboard(role: str):
                         'GPA Trend by Faculty</p>', unsafe_allow_html=True)
             st.plotly_chart(chart_gpa_trend(df),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="gpa_trend")
         with tc2:
             st.markdown('<p style="color:#94a3b8;font-size:.8rem;margin-bottom:.2rem">'
                         'High Risk Count Trend by Faculty</p>', unsafe_allow_html=True)
             st.plotly_chart(chart_risk_trend(df),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="risk_trend")
 
         st.markdown("<br>", unsafe_allow_html=True)
 
@@ -2244,7 +2255,8 @@ def main_dashboard(role: str):
                         unsafe_allow_html=True)
             st.plotly_chart(chart_shap_importance(),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="shap_importance_bottom")
             st.markdown(
                 '<div style="background:#131a26;border:1px solid #2a3344;' +
                 'border-left:3px solid #60a5fa;border-radius:0 8px 8px 0;' +
@@ -2261,7 +2273,8 @@ def main_dashboard(role: str):
                         unsafe_allow_html=True)
             st.plotly_chart(chart_fairness_audit(),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="fairness_audit_bottom")
             st.markdown(
                 '<div style="background:#131a26;border:1px solid #2a3344;' +
                 'border-left:3px solid #22c55e;border-radius:0 8px 8px 0;' +
