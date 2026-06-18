@@ -2096,7 +2096,8 @@ def main_dashboard(role: str):
                         unsafe_allow_html=True)
             st.plotly_chart(chart_shap_importance(),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="shap_importance_model_transparency")
 
         with sh2:
             st.markdown('<p style="color:#f1f5f9;font-weight:700;'
@@ -2675,7 +2676,8 @@ def main_dashboard(role: str):
                         unsafe_allow_html=True)
             st.plotly_chart(chart_shap_importance(),
                             use_container_width=True,
-                            config={"displayModeBar": False})
+                            config={"displayModeBar": False},
+                            key="shap_importance_trends_analysis")
             st.markdown(
                 '<div style="background:#131a26;border:1px solid #2a3344;' +
                 'border-left:3px solid #60a5fa;border-radius:0 8px 8px 0;' +
